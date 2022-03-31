@@ -1,21 +1,19 @@
-// acá colocas las credenciales de Firebase
-
-
-// Importe las funciones que necesita de los SDK que necesita
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-
-// Configuración de Firebase de tu aplicación web
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyA5umih8_-xznA1Y1VIjsnmG3qWveV91Mg",
+  authDomain: "ferreteria-clientside.firebaseapp.com",
+  projectId: "ferreteria-clientside",
+  storageBucket: "ferreteria-clientside.appspot.com",
+  messagingSenderId: "825736326416",
+  appId: "1:825736326416:web:31f483d42452d1007c4995"
 };
 
-// Inicializamos a Firebase
+// Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 
 export default firebaseApp
