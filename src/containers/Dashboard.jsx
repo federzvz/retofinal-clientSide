@@ -15,6 +15,7 @@ function Dashboard({ user }) {
      </div>
      <div className="title-saludo" >
       {user.rol === "admin" ? <AdminView /> : <VendedorView />}
+      {console.log(user.rol)}
      </div>
     </div>
   );

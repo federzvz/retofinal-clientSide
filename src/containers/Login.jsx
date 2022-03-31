@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { getFirestore, doc, collection, setDoc } from "firebase/firestore";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 const auth = getAuth(firebaseApp);
 
 function Login() {
@@ -33,7 +34,7 @@ function Login() {
     const password = e.target.elements.password.value;
     const rol = e.target.elements.rol.value;
 
-    if(password.length  < 6){
+    if (password.length < 6) {
       alert("La contraseña no puede ser menor a 6");
       return false;
     }
@@ -50,7 +51,69 @@ function Login() {
   }
 
   return (
-    <div className="hero" >
+    <>
+      <Container>
+        <h1 className="shadow-sm mt-5 p-3 text-center rounded">
+          {isRegistrando ? "Registrarse" : "Iniciar sesión"}
+        </h1>
+        <Row className="mt-5">
+          <Col
+            lg={5}
+            md={6}
+            sm={12}
+            className="p-5 m-auto shadow-sm rounded-lg"
+          >
+            <Form onSubmit={submitHandler}>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  id="email"
+                  placeholder="Ingrese correo elecronico"
+                />
+              </Form.Group>
+
+              <Form.Group controlId="formBasicPassword">
+                <Form.Label>Contraseña</Form.Label>
+                <Form.Control
+                  type="password"
+                  id="password"
+                  placeholder="Contraseña"
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label>Tipo de usuario</Form.Label>
+                <Form.Select aria-label="Default select example" id="rol">
+                  <option value="admin">Administrador</option>
+                  <option value="user">Usuario</option>
+                </Form.Select>
+              </Form.Group>
+
+              
+              <Form.Group className="mt-4">
+                <Button variant="primary" type="submit">
+                  {isRegistrando ? "Registrar" : "Iniciar sesión"}
+                </Button>
+              </Form.Group>
+            </Form>
+
+            <Form.Group className="mt-4">
+                <Button variant="dark" onClick={() => setIsRegistrando(!isRegistrando)}>
+                {isRegistrando ? "Ya tengo una cuenta" : "Quiero registrarme"}
+                </Button>
+              </Form.Group>
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
+}
+
+export default Login;
+
+/*
+<div className="hero" >
      <div className="div-logo">
 
      </div>
@@ -86,7 +149,13 @@ function Login() {
         {isRegistrando ? "Ya tengo una cuenta" : "Quiero registrarme"}
       </button>
     </div>
-  );
-}
+*/
 
-export default Login;
+
+/*
+<Form.Group className="mt-4">
+                <Button variant="primary" type="submit">
+                  {isRegistrando ? "Registrar" : "Iniciar sesión"}
+                </Button>
+              </Form.Group>
+*/

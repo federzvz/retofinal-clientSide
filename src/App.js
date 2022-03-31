@@ -3,7 +3,12 @@ import React, { useState } from "react";
 import Dashboard from "./containers/Dashboard";
 import Header from "./components/Header";
 import Login from "./containers/Login";
-import {BrowserRouter as Router, Route, Routes, Navigate} from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import firebaseApp from "./firebase/credentials.js";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
@@ -45,27 +50,34 @@ function App() {
     }
   });
 
-  return <>{ 
-  
-    <div className="app">
-        <Header/>
-        
-        <Router>
-        {user ? <Dashboard user={user} /> : <>{<Navigate to="/login" replace />}</>}
-        <div className="container">
-          <Routes>
-            <Route path="/home" element={<Dashboard/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path="/register" element={<Register/>} />
-          </Routes>
+  return (
+    <>
+      {
+        <div className="app">
+          <Header />
+
+          <Router>
+          <div className="container">
+              <Routes>
+            {user ? (
+              <>
+                <Route path="/" element={<Dashboard user={user} />} />
+              </>
+            ) : (
+              <>
+                <Route path="*" element={<Login />} />
+              </>
+            )}
+              </Routes>
+            </div>
+          </Router>
         </div>
-      </Router>
-    </div>
-  }</>;
+      }
+    </>
+  );
 }
 
 export default App;
-
 
 /*
 return <>{ 
@@ -83,3 +95,5 @@ return <>{
     </div>
   }</>;
 */
+
+/* {user ? <Dashboard user={user} /> : <>{<Navigate to="/login" replace />}</>}*/

@@ -1,8 +1,11 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { Nav, Navbar } from "react-bootstrap";
+import { getAuth, signOut } from "firebase/auth";
+import firebaseApp from "../firebase/credentials.js";
+const auth = getAuth(firebaseApp);
 
-function Header() {
+function Header({ user }) {
   return (
     <div className="header">
         <Navbar bg="dark" variant="dark">
@@ -15,7 +18,7 @@ function Header() {
             <Nav.Link href="ventas">Historial Ventas</Nav.Link>
             <Nav.Link href="clientes">Clientes</Nav.Link>
             <Nav.Link href="proveedores">Proveedores</Nav.Link>
-            <Nav.Link href="login">Cerar Sesion</Nav.Link>
+            <Nav.Link href="login" onClick={() => signOut(auth)}>Cerar Sesion</Nav.Link>
           </Nav>
         </Navbar>
     </div>
