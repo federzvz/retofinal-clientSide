@@ -1,6 +1,4 @@
-import { Button } from "bootstrap";
 import React, { useState, initialState } from "react";
-import { FormLabel } from "react-bootstrap";
 
 function TablaProductos() {
   const [data, setData] = useState(initialState);
@@ -19,7 +17,7 @@ function TablaProductos() {
       {data ? (
         <div className="container">
           <h2 className="text-center rounded">Inventario de productos</h2>
-          <button className="btn btn-success mb-2" onClick={obtenerProductos}>Actualizar Productos</button>
+          <button className="btn btn-secondary mb-2" onClick={obtenerProductos}>Actualizar</button>
           <table className="table table-striped">
             <thead>
               <td>ID</td>
@@ -43,7 +41,7 @@ function TablaProductos() {
           <ul></ul>
         </div>
       ) : (
-        <button className="btn btn-success" onClick={obtenerProductos}>Actualizar Productos</button>
+        <button className="btn btn-secondary mb-2" onClick={obtenerProductos}>Actualizar</button>
       )}
     </div>
   );

@@ -4,7 +4,7 @@ function TablaClientes() {
 
     const [data, setData] = useState(initialState);
 
-    const obtenerProductos = async () => {
+    const obtenerClientes = async () => {
         fetch("http://localhost:8080/cliente/")
         .then((response) => response.json())
         .then((json) => {
@@ -17,7 +17,7 @@ function TablaClientes() {
         <div>
           {data ? (
             <div className="container">
-              <button className="btn btn-success mb-2" onClick={obtenerProductos}>Actualizar Productos</button>
+              <button className="btn btn-secondary mb-2" onClick={obtenerClientes}>Actualizar</button>
               <table className="table table-striped">
                 <thead>
                   <td>Documento</td>
@@ -37,7 +37,7 @@ function TablaClientes() {
               <ul></ul>
             </div>
           ) : (
-            <button className="btn btn-success" onClick={obtenerProductos}>Actualizar Productos</button>
+            <button className="btn btn-secondary mb-2" onClick={obtenerClientes}>Actualizar</button>
           )}
         </div>
       );
