@@ -1,16 +1,37 @@
 import React, { useState, initialState } from "react";
 
 function Facturar() {
-    const [data, setData] = useState(initialState);
+  const [data, setData] = useState(initialState);
 
-    const obtenerCarritos = async () => {
-      fetch("http://localhost:8080/carrito/")
-        .then((response) => response.json())
-        .then((json) => {
-          console.log(json);
-          setData(json);
-        });
-    };
+  const obtenerCarritos = async () => {
+    fetch("http://localhost:8080/carrito/")
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        setData(json);
+      });
+  };
+
+  function procesarFactura(idFactura, type) {
+    if (type == 1) {
+      fetch(`http://localhost:8080/carrito/${idFactura}`, {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }).then(() => obtenerCarritos());
+    }
+    if (type == 2) {
+      fetch(`http://localhost:8080/carrito/rechazar/${idFactura}`, {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }).then(() => obtenerCarritos());
+    }
+  }
 
   return (
     <div className="container">
@@ -24,31 +45,35 @@ function Facturar() {
               >
                 Actualizar
               </button>
-              <table className="table table-striped">
+              <table className="table table-striped text-center">
                 <thead colspan="3">
-                  <td>ID</td>
+                  <td>Consecutivo</td>
                   <td>Fecha</td>
                   <td>Cliente</td>
                   <td>Nombre Empleado</td>
                   <td>Productos Comprados</td>
                   <td>Precio Total</td>
+                  <td>Aceptar</td>
+                  <td>Rechazar</td>
                 </thead>
                 {data.map((item) => (
                   <tr key={item.id}>
                     <td>{item.id}</td>
                     <td>{item.fecha}</td>
-                    <td><table className="table table-striped">
+                    <td>
+                      <table className="table table-striped">
                         <thead colspan="3">
                           <td>CI</td>
                           <td>Nombre</td>
                           <td>Celular</td>
                         </thead>
-                          <tr>
-                            <td>{item.cliente.documento}</td>
-                            <td>{item.cliente.nombre}</td>
-                            <td>{item.cliente.celular}</td>
-                          </tr>
-                      </table></td>
+                        <tr>
+                          <td>{item.cliente.documento}</td>
+                          <td>{item.cliente.nombre}</td>
+                          <td>{item.cliente.celular}</td>
+                        </tr>
+                      </table>
+                    </td>
                     <td>{item.nombreEmpleado}</td>
                     <td>
                       <table className="table table-striped">
@@ -69,6 +94,28 @@ function Facturar() {
                       </table>
                     </td>
                     <td>{item.precioTotalAPagar}</td>
+                    <td>
+                      <button
+                        className="btn btn-lg"
+                        type="submit"
+                        onClick={() => {
+                            procesarFactura(item.id,1);
+                        }}
+                      >
+                        Generar Factura
+                      </button>
+                    </td>
+                    <td>
+                      <button
+                        className="btn btn-lg"
+                        type="submit"
+                        onClick={() => {
+                            procesarFactura(item.id,2);
+                        }}
+                      >
+                        Eliminar
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </table>
