@@ -20,6 +20,7 @@ function Header({ user }) {
               <Nav.Link href="ventas">Historial Ventas</Nav.Link>
               <Nav.Link href="clientes">Clientes</Nav.Link>
               <Nav.Link href="proveedores">Proveedores</Nav.Link>
+              <Nav.Link href="facturacion">Facturacion</Nav.Link>
               <Nav.Link onClick={() => signOut(auth)}>Cerar Sesion</Nav.Link>
             </>
           ) : (
