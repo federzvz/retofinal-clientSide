@@ -6,7 +6,7 @@ function TablaProductos() {
   const [data, setData] = useState(initialState);
 
   const obtenerProductos = async () => {
-    fetch("http://localhost:8080/producto/")
+    fetch("http://localhost:8080/bodega/")
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
@@ -18,21 +18,24 @@ function TablaProductos() {
     <div>
       {data ? (
         <div className="container">
-          <button className="btn btn-success" onClick={obtenerProductos}>Actualizar Productos</button>
+          <h2 className="text-center rounded">Inventario de productos</h2>
+          <button className="btn btn-success mb-2" onClick={obtenerProductos}>Actualizar Productos</button>
           <table className="table table-striped">
             <thead>
               <td>ID</td>
               <td>Nombre</td>
               <td>Descripcion</td>
               <td>Precio</td>
+              <td>Stock</td>
             </thead>
             <tbody>
               {data.map((item) => (
                 <tr key={item.id}>
                   <td>{item.id}</td>
-                  <td>{item.nombre}</td>
-                  <td>{item.descripcion}</td>
-                  <td>{item.precio}</td>
+                  <td>{item.producto.nombre}</td>
+                  <td>{item.producto.descripcion}</td>
+                  <td>{item.producto.precio}</td>
+                  <td>{item.stock}</td>
                 </tr>
               ))}
             </tbody>

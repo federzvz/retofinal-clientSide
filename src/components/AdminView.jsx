@@ -6,7 +6,9 @@ function AdminView() {
   return (
     <>
       <div>
-        <h1>AdminView</h1>
+      <h1 className="shadow-sm mt-5 p-3 text-center rounded">
+          Admin Dashboard
+      </h1>
         <TablaProductos/>
       </div>
     </>

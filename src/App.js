@@ -62,6 +62,7 @@ function App() {
             {user ? (
               <>
                 <Route path="/" element={<Dashboard user={user} />} />
+                <Route path="/clientes" element={<Dashboard user={user} />} />
               </>
             ) : (
               <>
