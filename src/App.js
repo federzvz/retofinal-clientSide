@@ -56,8 +56,8 @@ function App() {
     <>
       {
         <div className="app">
-          <Header />
-
+          <Header user={user}/>
+          
           <Router>
           <div className="container">
               <Routes>
