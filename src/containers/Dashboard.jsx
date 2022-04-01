@@ -9,10 +9,6 @@ const auth = getAuth(firebaseApp);
 function Dashboard({ user }) {
   return (
     <div>
-     <div className="div-dashboard" >
-          <h1  >Dashboard</h1>
-          <button onClick={() => signOut(auth)}> Cerrar sesión</button>
-     </div>
      <div className="title-saludo" >
       {user.rol === "admin" ? <AdminView /> : <VendedorView />}
       {console.log(user.rol)}
