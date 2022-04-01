@@ -17,11 +17,24 @@ function Header({ user }) {
         <Nav>
           {user ? (
             <>
-              <Nav.Link href="ventas">Historial Ventas</Nav.Link>
-              <Nav.Link href="clientes">Clientes</Nav.Link>
-              <Nav.Link href="proveedores">Proveedores</Nav.Link>
-              <Nav.Link href="facturacion">Facturacion</Nav.Link>
-              <Nav.Link onClick={() => signOut(auth)}>Cerar Sesion</Nav.Link>
+              {user.rol === "admin" ? (
+                <>
+                  <Nav.Link href="ventas">Historial Ventas</Nav.Link>
+                  <Nav.Link href="clientes">Clientes</Nav.Link>
+                  <Nav.Link href="proveedores">Proveedores</Nav.Link>
+                  <Nav.Link href="facturacion">Facturacion</Nav.Link>
+                  <Nav.Link onClick={() => signOut(auth)}>
+                    Cerar Sesion
+                  </Nav.Link>
+                </>
+              ) : (
+                <>
+                  <Nav.Link href="/">Tienda online</Nav.Link>
+                  <Nav.Link onClick={() => signOut(auth)}>
+                    Cerar Sesion
+                  </Nav.Link>
+                </>
+              )}
             </>
           ) : (
             <Nav.Link href="login">Iniciar Sesión</Nav.Link>

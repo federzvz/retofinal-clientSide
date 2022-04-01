@@ -82,15 +82,18 @@ function Login() {
                 />
               </Form.Group>
 
-              <Form.Group>
-                <Form.Label>Tipo de usuario</Form.Label>
-                <Form.Select aria-label="Default select example" id="rol">
-                  <option value="admin">Administrador</option>
-                  <option value="user">Usuario</option>
-                </Form.Select>
-              </Form.Group>
+              {isRegistrando ? (
+                <Form.Group>
+                  <Form.Label>Tipo de usuario</Form.Label>
+                  <Form.Select aria-label="Default select example" id="rol">
+                    <option value="admin">Administrador</option>
+                    <option value="user">Usuario</option>
+                  </Form.Select>
+                </Form.Group>
+              ) : (
+                ""
+              )}
 
-              
               <Form.Group className="mt-4">
                 <Button variant="primary" type="submit">
                   {isRegistrando ? "Registrar" : "Iniciar sesión"}
@@ -99,10 +102,13 @@ function Login() {
             </Form>
 
             <Form.Group className="mt-4">
-                <Button variant="dark" onClick={() => setIsRegistrando(!isRegistrando)}>
+              <Button
+                variant="dark"
+                onClick={() => setIsRegistrando(!isRegistrando)}
+              >
                 {isRegistrando ? "Ya tengo una cuenta" : "Quiero registrarme"}
-                </Button>
-              </Form.Group>
+              </Button>
+            </Form.Group>
           </Col>
         </Row>
       </Container>
@@ -150,7 +156,6 @@ export default Login;
       </button>
     </div>
 */
-
 
 /*
 <Form.Group className="mt-4">

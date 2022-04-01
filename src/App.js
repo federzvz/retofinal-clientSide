@@ -58,24 +58,48 @@ function App() {
     <>
       {
         <div className="app">
-          <Header user={user}/>
-          
+          <Header user={user} />
+
           <Router>
-          <div className="container">
+            <div className="container">
               <Routes>
-            {user ? (
-              <>
-                <Route path="/" element={<Dashboard user={user} />} />
-                <Route path="/clientes" element={<Clientes user={user} />} />
-                <Route path="/proveedores" element={<Proveedores user={user} />} />
-                <Route path="/ventas" element={<Ventas user={user} />} />
-                <Route path="/facturacion" element={<Facturacion user={user} />} />
-              </>
-            ) : (
-              <>
-                <Route path="*" element={<Login />} />
-              </>
-            )}
+                {user ? (
+                  <>
+                    {user.rol === "admin" ? (
+                      <>
+                        <Route path="/" element={<Dashboard user={user} />} />
+                        <Route
+                          path="/clientes"
+                          element={<Clientes user={user} />}
+                        />
+                        <Route
+                          path="/proveedores"
+                          element={<Proveedores user={user} />}
+                        />
+                        <Route
+                          path="/ventas"
+                          element={<Ventas user={user} />}
+                        />
+                        <Route
+                          path="/facturacion"
+                          element={<Facturacion user={user} />}
+                        />
+                      </>
+                    ) : (
+                      <>
+                        <Route path="*" element={<Dashboard user={user} />} />
+                        <Route
+                          path="/clientes"
+                          element={<Clientes user={user} />}
+                        />
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <Route path="*" element={<Login />} />
+                  </>
+                )}
               </Routes>
             </div>
           </Router>
