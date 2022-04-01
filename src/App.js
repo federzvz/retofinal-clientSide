@@ -15,6 +15,7 @@ import { getFirestore, doc, getDoc } from "firebase/firestore";
 import Register from "./containers/Register";
 import Clientes from "./containers/Clientes";
 import Proveedores from "./containers/Proveedores";
+import Ventas from "./containers/Ventas";
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
@@ -66,6 +67,7 @@ function App() {
                 <Route path="/" element={<Dashboard user={user} />} />
                 <Route path="/clientes" element={<Clientes user={user} />} />
                 <Route path="/proveedores" element={<Proveedores user={user} />} />
+                <Route path="/ventas" element={<Ventas user={user} />} />
               </>
             ) : (
               <>
