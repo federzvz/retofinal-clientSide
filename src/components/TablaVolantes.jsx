@@ -31,7 +31,7 @@ function TablaVolantes() {
                   <td>Nombre Proveedor</td>
                   <td>Productos a Ingresar</td>
                   <td>Fecha de Ingreso</td>
-                  <td>Nombre Empleado</td>
+                  <td>Documento Proveedor</td>
                 </thead>
                 {data.map((item) => (
                   <tr key={item.id}>
