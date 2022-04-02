@@ -1,7 +1,8 @@
-import React, { useState ,initialState } from "react";
+import React, { useState } from "react";
 
 function TablaProductos() {
-  const [data, setData] = useState(initialState);
+
+  const [data, setData] = useState();
 
   const obtenerProductos = async () => {
     fetch("https://ferreteria-sofka.herokuapp.com/bodega/")
