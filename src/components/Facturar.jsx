@@ -1,10 +1,10 @@
-import React, { useState, initialState } from "react";
+import React, { useState ,initialState } from "react";
 
 function Facturar() {
   const [data, setData] = useState(initialState);
 
   const obtenerCarritos = async () => {
-    fetch("http://localhost:8080/carrito/")
+    fetch("https://ferreteria-sofka.herokuapp.com/carrito/")
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
@@ -16,7 +16,7 @@ function Facturar() {
 
   function procesarFactura(idFactura, type) {
     if (type == 1) {
-      fetch(`http://localhost:8080/carrito/${idFactura}`, {
+      fetch(`https://ferreteria-sofka.herokuapp.com/${idFactura}`, {
         method: "DELETE",
         headers: {
           Accept: "application/json",

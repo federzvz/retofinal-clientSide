@@ -1,10 +1,10 @@
-import React, { useState, initialState } from "react";
+import React, { useState ,initialState } from "react";
 
 function TablaProductos() {
   const [data, setData] = useState(initialState);
 
   const obtenerProductos = async () => {
-    fetch("http://localhost:8080/bodega/")
+    fetch("https://ferreteria-sofka.herokuapp.com/bodega/")
       .then((response) => response.json())
       .then((json) => {
         console.log(json);

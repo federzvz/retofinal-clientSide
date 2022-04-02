@@ -1,10 +1,10 @@
-import React, { initialState, useState } from "react";
+import React, { initialState ,useState } from "react";
 
 function TablaProveedores() {
   const [data, setData] = useState(initialState);
 
   const obtenerProveedores = async () => {
-    fetch("http://localhost:8080/proveedor/")
+    fetch("https://ferreteria-sofka.herokuapp.com/proveedor/")
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
