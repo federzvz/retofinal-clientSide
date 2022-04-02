@@ -12,6 +12,8 @@ function TablaProveedores() {
       });
   };
 
+  obtenerProveedores();
+
   return (
     <div>
       {data ? (

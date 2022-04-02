@@ -12,6 +12,8 @@ function Facturar() {
       });
   };
 
+  obtenerCarritos();
+
   function procesarFactura(idFactura, type) {
     if (type == 1) {
       fetch(`http://localhost:8080/carrito/${idFactura}`, {

@@ -17,6 +17,7 @@ import Clientes from "./containers/Clientes";
 import Proveedores from "./containers/Proveedores";
 import Ventas from "./containers/Ventas";
 import Facturacion from "./containers/Facturacion";
+import Volantes from "./containers/Volantes";
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
@@ -83,6 +84,10 @@ function App() {
                         <Route
                           path="/facturacion"
                           element={<Facturacion user={user} />}
+                        />
+                        <Route
+                          path="/volantes"
+                          element={<Volantes user={user} />}
                         />
                       </>
                     ) : (

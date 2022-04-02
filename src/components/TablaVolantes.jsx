@@ -1,10 +1,10 @@
-import React, { useState, initialState } from "react";
+import React, { useState, initialState } from 'react'
 
-function TablaVentas() {
-  const [data, setData] = useState(initialState);
+function TablaVolantes() {
+    const [data, setData] = useState(initialState);
 
-  const obtenerVentas = async () => {
-    fetch("http://localhost:8080/factura/")
+  const obtenerVolantes = async () => {
+    fetch("http://localhost:8080/volante/")
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
@@ -12,8 +12,8 @@ function TablaVentas() {
       });
   };
 
-  obtenerVentas();
-
+  obtenerVolantes();
+    
   return (
     <div className="container">
       {data ? (
@@ -22,25 +22,20 @@ function TablaVentas() {
             <div className="table-responsive">
               <button
                 className="btn btn-secondary mb-2"
-                onClick={obtenerVentas}
+                onClick={obtenerVolantes}
               >
                 Actualizar
               </button>
               <table className="table table-striped">
                 <thead colspan="3">
-                  <td>ID</td>
-                  <td>Fecha</td>
-                  <td>Nombre Cliente</td>
+                  <td>Nombre Proveedor</td>
+                  <td>Productos a Ingresar</td>
+                  <td>Fecha de Ingreso</td>
                   <td>Nombre Empleado</td>
-                  <td>Productos Comprados</td>
-                  <td>Precio Total</td>
                 </thead>
                 {data.map((item) => (
                   <tr key={item.id}>
-                    <td>{item.id}</td>
-                    <td>{item.fecha}</td>
-                    <td>{item.nombreCliente}</td>
-                    <td>{item.nombreEmpleado}</td>
+                    <td>{item.nombreProveedor}</td>
                     <td>
                     <table className="table table-striped">
                         <thead colspan="3">
@@ -49,7 +44,7 @@ function TablaVentas() {
                           <td>Descripcion</td>
                           <td>Precio</td>
                         </thead>
-                        {item.productosComprados.map((p) => (
+                        {item.productoListAIngresar.map((p) => (
                           <tr>
                             <td>{p.id}</td>
                             <td>{p.nombre}</td>
@@ -59,7 +54,8 @@ function TablaVentas() {
                         ))}
                       </table>
                     </td>
-                    <td>{item.precioTotalAPagar}</td>
+                    <td>{item.fecha}</td>
+                    <td>{item.documentoProveedor}</td>
                   </tr>
                 ))}
               </table>
@@ -67,7 +63,7 @@ function TablaVentas() {
           </div>
         </div>
       ) : (
-        <button className="btn btn-secondary mb-2" onClick={obtenerVentas}>
+        <button className="btn btn-secondary mb-2" onClick={obtenerVolantes}>
           Actualizar
         </button>
       )}
@@ -75,4 +71,4 @@ function TablaVentas() {
   );
 }
 
-export default TablaVentas;
+export default TablaVolantes

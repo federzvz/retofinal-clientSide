@@ -12,6 +12,8 @@ function TablaProductos() {
       });
   };
 
+  obtenerProductos();
+
   return (
     <div>
       {data ? (

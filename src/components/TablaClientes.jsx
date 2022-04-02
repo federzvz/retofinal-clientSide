@@ -12,6 +12,8 @@ function TablaClientes() {
       });
   };
 
+  obtenerClientes();
+
   function generarFactura(ci) {
     alert(ci);
   }

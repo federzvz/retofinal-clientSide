@@ -23,15 +23,16 @@ function Header({ user }) {
                   <Nav.Link href="clientes">Clientes</Nav.Link>
                   <Nav.Link href="proveedores">Proveedores</Nav.Link>
                   <Nav.Link href="facturacion">Facturacion</Nav.Link>
+                  <Nav.Link href="volantes">Volantes de Entrada</Nav.Link>
                   <Nav.Link onClick={() => signOut(auth)}>
-                    Cerar Sesion
+                    Cerrar Sesion
                   </Nav.Link>
                 </>
               ) : (
                 <>
                   <Nav.Link href="/">Tienda online</Nav.Link>
                   <Nav.Link onClick={() => signOut(auth)}>
-                    Cerar Sesion
+                    Cerrar Sesion
                   </Nav.Link>
                 </>
               )}
