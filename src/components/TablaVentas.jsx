@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function TablaVentas() {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
 
   const obtenerVentas = async () => {
     fetch("https://ferreteria-sofka.herokuapp.com/factura/")

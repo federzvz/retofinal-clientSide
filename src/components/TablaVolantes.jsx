@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function TablaVolantes() {
-    const [data, setData] = useState();
+    const [data, setData] = useState(null);
 
   const obtenerVolantes = async () => {
     fetch("https://ferreteria-sofka.herokuapp.com/volante/")

@@ -1,7 +1,7 @@
-import React, { useState ,initialState } from "react";
+import React, { useState  } from "react";
 
 function Facturar() {
-  const [data, setData] = useState(initialState);
+  const [data, setData] = useState(null);
 
   const obtenerCarritos = async () => {
     fetch("https://ferreteria-sofka.herokuapp.com/carrito/")
